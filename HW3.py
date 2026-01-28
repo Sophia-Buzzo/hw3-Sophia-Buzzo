@@ -1,6 +1,6 @@
-# Name:
-# Student ID:
-# Email:
+# Name:Sophia Buzzo
+# Student ID: 4140 3841
+# Email: sbuzzo@umich.edu
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
@@ -26,16 +26,37 @@ class CouponDispenser:
     """
 
     def __init__(self, coupon_cards):
+        self.coupon_cards = CouponDispenser.coupon_cards
+        self.customer_roster = CouponDispenser.customer_roster
+        self.issued_indices = CouponDispenser.issued_indices
+       
+        self.coupon_cards = coupon_cards
+        self.customer_roster = []
+        self.issued_indices = []
+
+        CouponDispenser = [
+            "10% off",
+            "Free small coffee",
+            "Buy 1 get 1 half off",
+            "Free extra espresso shot",
+        ]
+
         """
         Initialize a new CouponDispenser object.
 
         Args:
             coupon_cards (list[str]): list of possible coupons users can receive.
         """
-        # TODO: Implement per instructions
-        pass
+       
+        
 
     def __str__(self):
+        box_multi = CouponDispenser(["10% off", "Free small coffee", "Buy 1 get 1 half off"])
+        print(str(box_multi))  # Expected: "10% off|Free small coffee|Buy 1 get 1 half off"
+        if coupon_cards == []:
+            return ""
+        else:
+            return "|".join(self.coupon_cards)
         """
         Return a single string with all coupons in coupon_cards joined by pipes ('|').
         If coupon_cards is empty, return an empty string "".
@@ -43,10 +64,24 @@ class CouponDispenser:
         Returns:
             str
         """
-        # TODO: Implement per instructions
-        pass
+        
+      
 
     def issue_coupon(self, name):
+        if name in self.customer_roster:
+            index = self.customer_roster.index(name)
+            coupon_index = self.issued_indices[index]
+            coupon = self.coupon_cards[coupon_index]
+            return f"That name already has a coupon: {coupon}"
+        elif not self.coupon_cards:
+            return "The box is empty."
+        else:
+            coupon_index = random.randint(0, len(self.coupon_cards) - 1)
+            self.customer_roster.append(name)
+            self.issued_indices.append(coupon_index)
+            coupon = self.coupon_cards[coupon_index]
+            return coupon
+
         """
         Assign name with a random coupon. If name is already assigned a coupon, return it.
         If the list coupon_cards is empty, return:
@@ -60,8 +95,7 @@ class CouponDispenser:
         Returns:
             str: message as described above
         """
-        # TODO: Implement per instructions
-        pass
+        
 
     def distribute_session(self):
         """
