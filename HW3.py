@@ -26,9 +26,8 @@ class CouponDispenser:
     """
 
     def __init__(self, coupon_cards):
-        self.coupon_cards = CouponDispenser.coupon_cards
-        self.customer_roster = CouponDispenser.customer_roster
-        self.issued_indices = CouponDispenser.issued_indices
+        
+        
        
         self.coupon_cards = coupon_cards
         self.customer_roster = []
@@ -53,7 +52,7 @@ class CouponDispenser:
     def __str__(self):
         box_multi = CouponDispenser(["10% off", "Free small coffee", "Buy 1 get 1 half off"])
         print(str(box_multi))  # Expected: "10% off|Free small coffee|Buy 1 get 1 half off"
-        if coupon_cards == []:
+        if not self.coupon_cards:
             return ""
         else:
             return "|".join(self.coupon_cards)
@@ -106,26 +105,33 @@ class CouponDispenser:
                 print("Goodbye")
                 break
             elif user_input == "show":
-                if not customer_roster:
+                if not self.customer_roster:
                     print("No customers assigned yet.")
                 else:
-                    for i in range(len(customer_roster)):
-                        print(f"{customer_roster[i]}: {coupon_assignment[i]}")
+                    for i in range(len(self.customer_roster)):
+                        coupon_index = self.issued_indicies[i]
+                        coupon_text = self.coupon_cards[coupon_index]
+                        print(f"{self.customer_roster[i]}: {coupon_text}")
             else:
                 commas = user_input.split(",")
                 for comma in commas:
                     stripped_name = comma.strip()
                     if stripped_name:
-                        print(issue_coupon(stripped_name))
+                        print(self.issue_coupon(stripped_name))
 
 
     def tally_distribution(self):
-        if not coupon_cards:
-            print("Empty")
-        else:
-            for coupon in coupon_cards:
-                print(f"{coupon_cards} distribution count: {count}")
+       if not self.issued_indicies:
+        print("Empty")
         return
+       coupon_counts = [0] * len(self.coupon_cards)
+       for index in self.issued_indicies:
+        coupon_counts[index] += 1
+        for i in range(len(self.coupon_cards)):
+            coupon = self.coupon_cards[i]
+            count = coupon_counts[i]
+            print(f"{coupon} distribution count: {count}.")
+    
         
         """
         Extra credit:
