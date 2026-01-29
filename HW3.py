@@ -98,24 +98,35 @@ class CouponDispenser:
         
 
     def distribute_session(self):
-        """
-        Run the "coupon dispenser" session.
+        round_number = 0
+        while True:
+            round_number += 1
+            user_input = input(f"Round {round_number} - Enter a name (or a comma-separated list) or type 'show' or 'exit': ")
+            if user_input == "exit":
+                print("Goodbye")
+                break
+            elif user_input == "show":
+                if not customer_roster:
+                    print("No customers assigned yet.")
+                else:
+                    for i in range(len(customer_roster)):
+                        print(f"{customer_roster[i]}: {coupon_assignment[i]}")
+            else:
+                commas = user_input.split(",")
+                for comma in commas:
+                    stripped_name = comma.strip()
+                    if stripped_name:
+                        print(issue_coupon(stripped_name))
 
-        The program will loop asking you to enter a customer name (or names), show, or exit.  
-        - If you type exit (exact spelling) the program will print "Goodbye!" and stop.  
-        - If you enter one or more customer names (separated by commas).
-           * A coupon will be picked at random from a list of coupons for each name 
-           if that name doesn't already have an assigned coupon. 
-        - If you type show (exact spelling) it will display a string with each customer's name and coupon.
-
-        See the instructions for more details.
-
-        Reminder: Use lists only (no dictionaries).
-        """
-        # TODO: Implement per instructions 
-        pass
 
     def tally_distribution(self):
+        if not coupon_cards:
+            print("Empty")
+        else:
+            for coupon in coupon_cards:
+                print(f"{coupon_cards} distribution count: {count}")
+        return
+        
         """
         Extra credit:
         Print coupon distribution counts (NO sorting) using ONLY lists.
@@ -130,9 +141,7 @@ class CouponDispenser:
         Returns:
             None
         """
-        # TODO: Implement per instructions
-        pass
-
+        
 
 def main():
     """
@@ -150,10 +159,10 @@ def main():
     ]
 
     # Uncomment the lines below as you implement each function.
-    # box = CouponDispenser(coupon_cards)
-    # box.distribute_session()
-    # box.tally_distribution()
-    pass
+    box = CouponDispenser(coupon_cards)
+    box.distribute_session()
+    box.tally_distribution()
+    
 
 
 # -----------------------
