@@ -1,12 +1,14 @@
 # Name:Sophia Buzzo
 # Student ID: 4140 3841
 # Email: sbuzzo@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT):
+# Who or what you worked with on this homework (including generative AI like ChatGPT): AI chat
 # If you worked with generative AI also add a statement for how you used it.
-# e.g.:
+# e.g.: Asked generative AI to explain the attribute error I was getting in my code.
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
 # Did your use of GenAI on this assignment align with your goals and guidelines in 
-#    your Gen AI contract? If not, why?
+#    your Gen AI contract? If not, why? Yes,because I tried multiple on my own to see if I can fix the error on my own,
+# but when I could not figure it out I asked the AI chat to explain the error for me and one thing it mentioned was that it could be due to mispelling
+# so when I checked my code I found that I had a typo in one of my attribute names.
 
 import random
 import io
