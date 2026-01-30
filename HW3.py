@@ -109,7 +109,7 @@ class CouponDispenser:
                     print("No customers assigned yet.")
                 else:
                     for i in range(len(self.customer_roster)):
-                        coupon_index = self.issued_indicies[i]
+                        coupon_index = self.issued_indices[i]
                         coupon_text = self.coupon_cards[coupon_index]
                         print(f"{self.customer_roster[i]}: {coupon_text}")
             else:
@@ -121,11 +121,11 @@ class CouponDispenser:
 
 
     def tally_distribution(self):
-       if not self.issued_indicies:
+       if not self.issued_indices:
         print("Empty")
         return
        coupon_counts = [0] * len(self.coupon_cards)
-       for index in self.issued_indicies:
+       for index in self.issued_indices:
         coupon_counts[index] += 1
         for i in range(len(self.coupon_cards)):
             coupon = self.coupon_cards[i]
@@ -150,6 +150,7 @@ class CouponDispenser:
         
 
 def main():
+    
     """
     Driver function:
       - Define the coupon_cards list (example coupons below)
